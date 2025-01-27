@@ -1,22 +1,26 @@
-// import logo from './logo.svg';
-import './App.css';
-import { Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import Home from './components/Home';
-import About from './components/About';
+import './../styles/App.css';
+import React from 'react';
+import Home from './Home';
+import About from './About';
 
-function App() {
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+
+const App = () => {
   return (
-    <div className="App">
-       <Header/>
-       <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/about' element={<About/>}/>
-     </Routes>
-    
-   
-    </div>
+    <Router>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/about" component={About} />
+      </Switch>
+    </Router>
   );
-}
+};
+
 
 export default App;
